@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obtén una oferta por tu propiedad | GESDA</title>
+  <meta name="description" content="Llena el formulario y recibe una oferta por tu propiedad en menos de 48 horas. Cobertura en todo Jalisco." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/vender.css" />
+</head>
+<body class="page-vender">
+
+  <!-- NAV -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/logo.png" alt="GESDA Constructora" />
+      </a>
+      <a href="index.html" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <!-- HERO VENTA -->
+  <section class="vender-hero">
+    <div class="vender-hero-bg">
+      <img src="assets/img/viviendas.jpg" alt="Propiedades" />
+      <div class="vender-hero-overlay"></div>
+    </div>
+    <div class="vender-hero-content">
+      <span class="section-tag">Compra · Venta · Interés Social</span>
+      <h1>Obtén una oferta por<br /><span class="gold">tu propiedad ahora</span></h1>
+      <p>
+        Llena el formulario con los datos básicos de tu propiedad.<br />
+        Nuestro equipo analizará tu caso y te enviará una oferta real en <strong>menos de 48 horas</strong>.
+      </p>
+      <div class="vender-hero-badges">
+        <span>✓ Sin compromiso</span>
+        <span>✓ Trámites a nuestro cargo</span>
+        <span>✓ Todo Jalisco</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="vender-form-section">
+    <div class="vender-form-wrap">
+
+      <div class="vform-left">
+        <h2>¿Cómo funciona?</h2>
+        <div class="vform-steps">
+          <div class="vform-step">
+            <div class="vstep-num">1</div>
+            <div>
+              <strong>Llena el formulario</strong>
+              <p>Datos básicos de la propiedad y tus datos de contacto. Tarda menos de 2 minutos.</p>
+            </div>
+          </div>
+          <div class="vform-step">
+            <div class="vstep-num">2</div>
+            <div>
+              <strong>Recibe tu oferta</strong>
+              <p>Analizamos el valor de mercado y te enviamos una propuesta económica formal en menos de 48 horas.</p>
+            </div>
+          </div>
+          <div class="vform-step">
+            <div class="vstep-num">3</div>
+            <div>
+              <strong>Cierra el trato</strong>
+              <p>Si aceptas, nuestro equipo legal gestiona todo. Solo firmas y recibes tu dinero.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vform-contact-aside">
+          <p>¿Prefieres escribirnos directamente?</p>
+          <a href="mailto:gesda.inmo@gmail.com" class="btn-outline">✉️ gesda.inmo@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="vform-right">
+        <form id="ventaForm" class="venta-form">
+          <h3>Datos de la propiedad</h3>
+
+          <div class="fgroup">
+            <label>Tipo de propiedad *</label>
+            <select name="tipo" required>
+              <option value="">Selecciona</option>
+              <option>Casa habitación</option>
+              <option>Departamento</option>
+              <option>Terreno</option>
+              <option>Local comercial</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="fgroup fgroup--half">
+            <div>
+              <label>Calle y número *</label>
+              <input type="text" name="calle" placeholder="Ej. Calle Robles 45" required />
+            </div>
+            <div>
+              <label>Colonia *</label>
+              <input type="text" name="colonia" placeholder="Ej. Las Flores" required />
+            </div>
+          </div>
+
+          <div class="fgroup">
+            <label>Municipio *</label>
+            <input type="text" name="municipio" placeholder="Ej. Guadalajara" required />
+          </div>
+
+          <div class="fgroup">
+            <label>Estado actual de la propiedad</label>
+            <select name="estado">
+              <option value="">Selecciona</option>
+              <option>Abandonada</option>
+              <option>Vandalizada</option>
+              <option>Invadida</option>
+            </select>
+          </div>
+
+          <div class="fgroup">
+            <label>¿Cuántos años lleva pagando la propiedad?</label>
+            <input type="text" name="anios_pagando" placeholder="Ej. 5 años" />
+          </div>
+
+          <div class="fgroup">
+            <label>¿Tiene crédito hipotecario activo?</label>
+            <select name="credito">
+              <option value="">Selecciona</option>
+              <option>Sí, INFONAVIT</option>
+              <option>Sí, FOVISSSTE</option>
+              <option>Sí, banco privado</option>
+              <option>No, es propia sin crédito</option>
+            </select>
+          </div>
+
+          <div class="fgroup">
+            <label>Notas adicionales (opcional)</label>
+            <textarea name="notas" rows="3" placeholder="Cuéntanos algo más sobre la propiedad o tu situación..."></textarea>
+          </div>
+
+          <div class="vform-divider"><span>Tus datos de contacto</span></div>
+
+          <div class="fgroup fgroup--half">
+            <div>
+              <label>Nombre completo *</label>
+              <input type="text" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div>
+              <label>Teléfono *</label>
+              <input type="tel" name="telefono" placeholder="10 dígitos" required />
+            </div>
+          </div>
+
+          <div class="fgroup">
+            <label>Correo electrónico</label>
+            <input type="email" name="email" placeholder="para enviarte la oferta por escrito" />
+          </div>
+
+          <button type="submit" class="btn-primary btn-full btn-venta">
+            Enviar y recibir mi oferta →
+          </button>
+          <p class="form-note">Al enviar acepta que GESDA Constructora se ponga en contacto con usted. Sin spam.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-min">
+    <div class="footer-min-inner">
+      <div class="footer-min-links">
+        <a href="tel:3334760271">333 476 0271</a>
+        <a href="mailto:gesda.inmo@gmail.com">gesda.inmo@gmail.com</a>
+        <span>Todo Jalisco</span>
+      </div>
+      <p>© 2026 GESDA Constructora</p>
+    </div>
+  </footer>
+
+  <!-- Toast de notificación -->
+  <div id="toast" style="
+    display:none; position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+    background:#1a1a2e; border:1px solid var(--gold); color:#fff;
+    padding:16px 28px; border-radius:100px; font-size:0.95rem;
+    z-index:9999; box-shadow:0 8px 32px rgba(0,0,0,0.5); white-space:nowrap;
+  "></div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function showToast(msg, ok) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      t.style.borderColor = ok ? 'var(--gold)' : '#e55';
+      setTimeout(() => { t.style.display = 'none'; }, 5000);
+    }
+
+    document.getElementById('ventaForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.textContent = 'Enviando…';
+      btn.disabled = true;
+
+      const d = new FormData(this);
+      const nombre    = d.get('nombre')        || '—';
+      const telefono  = d.get('telefono')      || '—';
+      const email     = d.get('email')         || '—';
+      const tipo      = d.get('tipo')          || '—';
+      const calle     = d.get('calle')         || '—';
+      const colonia   = d.get('colonia')       || '—';
+      const municipio = d.get('municipio')     || '—';
+      const estado    = d.get('estado')        || '—';
+      const anios     = d.get('anios_pagando') || '—';
+      const credito   = d.get('credito')       || '—';
+      const notas     = d.get('notas')         || '';
+
+      const payload = {
+        _subject:  `Solicitud de oferta — ${nombre} — ${municipio}`,
+        _template: 'table',
+        _captcha:  'false',
+        Nombre:         nombre,
+        Teléfono:       telefono,
+        Email:          email,
+        'Tipo de propiedad':  tipo,
+        Dirección:      `${calle}, Col. ${colonia}, ${municipio}`,
+        'Estado actual':      estado,
+        'Años pagando':       anios,
+        'Crédito activo':     credito,
+        Notas:          notas || '—',
+      };
+
+      try {
+        const res  = await fetch('https://formsubmit.co/ajax/gesda.inmo@gmail.com', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (json.success === 'true' || json.success === true) {
+          showToast('✓ Solicitud enviada — te contactamos en menos de 48 hrs', true);
+          this.reset();
+        } else {
+          throw new Error('error');
+        }
+      } catch {
+        showToast('⚠ No se pudo enviar. Escríbenos a gesda.inmo@gmail.com', false);
+      } finally {
+        btn.textContent = 'Enviar y recibir mi oferta →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

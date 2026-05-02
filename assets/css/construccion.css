@@ -1,0 +1,424 @@
+/* ─── CONSTRUCCION PAGE ─── */
+.page-construccion { background: var(--dark); }
+
+.nav-back {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--gold); }
+
+/* ─── HERO ─── */
+.const-hero {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.const-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.const-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+.const-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,16,0.4) 0%, rgba(8,8,16,0.9) 100%);
+}
+
+.const-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 72px;
+  width: 100%;
+}
+
+.const-hero-content h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin: 16px 0 20px;
+}
+
+.const-hero-content p {
+  font-size: 1.05rem;
+  color: rgba(232,232,240,0.8);
+  line-height: 1.8;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+/* ─── GALLERY PHASES ─── */
+.gallery-phase-section {
+  padding: 100px 0;
+  background: var(--dark);
+}
+
+.phase-block {
+  margin-bottom: 80px;
+}
+.phase-block:last-child { margin-bottom: 0; }
+
+.phase-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.phase-num {
+  font-family: var(--font-head);
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.phase-title {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.phase-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.phase-grid {
+  display: grid;
+  gap: 12px;
+}
+.phase-grid--1 { grid-template-columns: 1fr; }
+.phase-grid--2 { grid-template-columns: 1fr 1fr; }
+.phase-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.phase-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  aspect-ratio: 4/3;
+}
+.phase-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.phase-img:hover img { transform: scale(1.05); }
+
+/* 4ta imagen span completo */
+.phase-img--wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 21/8;
+}
+
+/* ─── ESTUDIO DE SUELO ─── */
+.suelo-section {
+  background: var(--dark-2);
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.suelo-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.suelo-text h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.suelo-text > p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.suelo-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.suelo-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.sf-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.suelo-feature strong {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.suelo-feature p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.suelo-video-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 9/16;
+  max-height: 520px;
+}
+
+.suelo-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.suelo-video-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8,8,16,0.85);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 8px 18px;
+  border-radius: 100px;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── CONTACTO SECTION ─── */
+.const-cta-section {
+  padding: 100px 0;
+  background: var(--dark);
+}
+
+.const-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.const-cta-text h2 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.const-cta-text p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.const-cta-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.const-form-wrap {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+}
+
+.const-form-wrap h3 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+/* Reutilizamos los .fgroup de vender.css pero los definimos de nuevo aquí */
+.const-form-wrap .fgroup {
+  margin-bottom: 20px;
+}
+.const-form-wrap .fgroup label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.const-form-wrap .fgroup input,
+.const-form-wrap .fgroup select,
+.const-form-wrap .fgroup textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 13px 16px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.const-form-wrap .fgroup input:focus,
+.const-form-wrap .fgroup select:focus,
+.const-form-wrap .fgroup textarea:focus { border-color: var(--gold); }
+.const-form-wrap .fgroup select option { background: var(--dark-2); }
+.const-form-wrap .fgroup--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.const-form-wrap .fgroup--half > div { margin-bottom: 20px; }
+
+/* ─── FORMULARIO DINÁMICO ─── */
+.form-step.hidden { display: none; }
+.sub-group.hidden  { display: none; }
+
+.tipo-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.tipo-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+.tipo-card:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  transform: translateY(-3px);
+}
+.tipo-card.selected {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.tipo-icon {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+.tipo-card strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.tipo-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.step-back {
+  margin-bottom: 20px;
+}
+.step-back button {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-body);
+  transition: opacity 0.2s;
+}
+.step-back button:hover { opacity: 0.7; }
+
+.step-intro {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.sub-group {
+  background: rgba(201,168,76,0.06);
+  border-left: 2px solid var(--gold);
+  padding: 16px 16px 4px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 20px;
+}
+
+.const-form-wrap h3 {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .suelo-inner    { grid-template-columns: 1fr; }
+  .const-cta-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .phase-grid--2 { grid-template-columns: 1fr; }
+  .phase-grid--3 { grid-template-columns: 1fr; }
+  .phase-img--wide { aspect-ratio: 4/3; }
+  .suelo-video-wrap { aspect-ratio: 16/9; max-height: none; }
+  .const-form-wrap { padding: 28px 20px; }
+  .tipo-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .const-form-wrap .fgroup--half { grid-template-columns: 1fr; }
+}

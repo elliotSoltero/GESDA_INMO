@@ -1,0 +1,259 @@
+/* ─── VENDER PAGE ─── */
+.page-vender { background: var(--dark); }
+
+.nav-back {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--gold); }
+
+/* HERO */
+.vender-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 72px;
+  overflow: hidden;
+}
+
+.vender-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.vender-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+}
+.vender-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8,8,16,0.5) 0%,
+    rgba(8,8,16,0.85) 100%
+  );
+}
+
+.vender-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 0;
+}
+
+.vender-hero-content h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin: 16px 0 20px;
+}
+
+.vender-hero-content p {
+  font-size: 1.1rem;
+  color: rgba(232,232,240,0.8);
+  line-height: 1.8;
+  max-width: 580px;
+  margin-bottom: 28px;
+}
+
+.vender-hero-content strong { color: var(--gold); }
+
+.vender-hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.vender-hero-badges span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(201,168,76,0.08);
+}
+
+/* FORM SECTION */
+.vender-form-section {
+  background: var(--dark-2);
+  padding: 80px 24px;
+}
+
+.vender-form-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* LEFT — HOW IT WORKS */
+.vform-left h2 {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 32px;
+}
+
+.vform-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.vform-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.vstep-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vform-step strong {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.vform-step p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.vform-contact-aside {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--dark-card);
+}
+.vform-contact-aside p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* RIGHT — FORM */
+.vform-right {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px;
+}
+
+.venta-form h3 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.fgroup {
+  margin-bottom: 20px;
+}
+
+.fgroup label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.fgroup input,
+.fgroup select,
+.fgroup textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 13px 16px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.fgroup input:focus,
+.fgroup select:focus,
+.fgroup textarea:focus { border-color: var(--gold); }
+.fgroup select option { background: var(--dark-2); }
+
+.fgroup--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.fgroup--half > div { margin-bottom: 20px; }
+
+.vform-divider {
+  text-align: center;
+  position: relative;
+  margin: 28px 0;
+}
+.vform-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+}
+.vform-divider span {
+  position: relative;
+  background: var(--dark-card);
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.btn-venta {
+  font-size: 1rem;
+  padding: 18px;
+  margin-top: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .vender-form-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fgroup--half { grid-template-columns: 1fr; }
+  .vform-right { padding: 28px 20px; }
+}
