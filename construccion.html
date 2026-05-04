@@ -272,7 +272,7 @@
                 <textarea name="desc_remo" rows="3" placeholder="Describe qué quieres lograr..."></textarea>
               </div>
 
-              <button type="submit" class="btn-primary btn-full" data-action="remodelacion" onclick="fbq('track', 'Lead');">
+              <button type="submit" class="btn-primary btn-full" data-action="remodelacion">
                 Solicitar cotización de remodelación →
               </button>
               <p class="form-note">Sin compromiso · Respuesta en 48 hrs · Todo Jalisco</p>
@@ -355,7 +355,7 @@
                 <textarea name="desc_cons" rows="2" placeholder="Algo más que quieras comentarnos..."></textarea>
               </div>
 
-              <button type="submit" class="btn-primary btn-full" data-action="construccion" onclick="fbq('track', 'Lead');">
+              <button type="submit" class="btn-primary btn-full" data-action="construccion">
                 Solicitar cotización de construcción →
               </button>
               <p class="form-note">Sin compromiso · Respuesta en 48 hrs · Todo Jalisco</p>
@@ -416,6 +416,7 @@
         });
         const json = await res.json();
         if (json.success === 'true' || json.success === true) {
+          fbq('track', 'Lead');
           showToast('✓ Mensaje enviado — te contactamos en menos de 48 hrs', true);
           document.getElementById('constForm').reset();
           // Vuelve al paso inicial

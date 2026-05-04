@@ -175,7 +175,7 @@
             <input type="email" name="email" placeholder="para enviarte la oferta por escrito" required />
           </div>
 
-          <button type="submit" class="btn-primary btn-full btn-venta" onclick="fbq('track', 'Lead');">
+          <button type="submit" class="btn-primary btn-full btn-venta">
             Enviar y recibir mi oferta →
           </button>
           <p class="form-note">Al enviar acepta que GESDA Constructora se ponga en contacto con usted. Sin spam.</p>
@@ -258,6 +258,7 @@
         });
         const json = await res.json();
         if (json.success === 'true' || json.success === true) {
+          fbq('track', 'Lead');
           showToast('✓ Solicitud enviada — te contactamos en menos de 48 hrs', true);
           this.reset();
         } else {
