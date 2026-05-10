@@ -245,6 +245,78 @@
   cursor: pointer;
 }
 
+/* ─── MAPA CP ─── */
+.cp-map-wrap {
+  height: 280px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+/* ─── CHECKBOXES ─── */
+.fgroup-check {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.fcheck {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.fcheck:hover { border-color: var(--gold); }
+
+.fcheck input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.fcheck span {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* ─── FILE UPLOAD ─── */
+.file-upload-wrap input[type="file"] {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.file-upload-wrap input[type="file"]:hover { border-color: var(--gold); }
+
+.file-hint {
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .vender-form-wrap {
