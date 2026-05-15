@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Obtén una oferta por tu propiedad | GESDA</title>
-  <meta name="description" content="Llena el formulario y recibe una oferta por tu propiedad en menos de 48 horas. Cobertura en todo Jalisco." />
+  <title>Vende tu casa INFONAVIT | GESDA Constructora Guadalajara</title>
+  <meta name="description" content="Compramos tu casa aunque tenga crédito INFONAVIT activo o adeudo. Oferta en 48 horas. Todo ante notario. Sin costo para ti. Guadalajara, Jalisco." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/vender.css" />
   <!-- Facebook Pixel Code -->
@@ -23,12 +22,205 @@
   fbq('init', '3163393370716186');
   fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" src="https://www.facebook.com/tr?id=3163393370716186&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Facebook Pixel Code -->
+  <noscript><img height="1" width="1" src="https://www.facebook.com/tr?id=3163393370716186&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    /* ── URGENCY BAR ── */
+    #urgency-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: linear-gradient(90deg, #b71c1c, #e53935);
+      color: #fff; text-align: center; padding: 9px 16px;
+      font-size: 13px; font-weight: 600; letter-spacing: .2px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    #urgency-bar .ub-spots {
+      background: rgba(255,255,255,.22); border-radius: 20px;
+      padding: 2px 10px; font-weight: 800;
+    }
+    #urgency-bar a {
+      color: #fff; text-decoration: underline; margin-left: 6px;
+      white-space: nowrap;
+    }
+    body { padding-top: 38px; }
+    #navbar { top: 38px; }
+
+    /* ── WHATSAPP FLOTANTE ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 24px; z-index: 9998;
+      background: #25d366; color: #fff;
+      border-radius: 50px; padding: 13px 20px;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 14px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.55); }
+    .wa-float svg { flex-shrink: 0; }
+    @media(max-width:480px){ .wa-float span { display:none; } .wa-float { padding:13px; border-radius:50%; } }
+
+    /* ── SOCIAL PROOF STRIP ── */
+    .social-proof-strip {
+      display: flex; gap: 20px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .sp-item {
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px; padding: 6px 14px; font-size: 13px; font-weight: 600;
+    }
+
+    /* ── PROCESS SECTION ── */
+    .process-section {
+      background: var(--dark-2); padding: 72px 40px;
+    }
+    .process-inner { max-width: 900px; margin: 0 auto; }
+    .process-title {
+      text-align: center; font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: #fff;
+    }
+    .process-sub {
+      text-align: center; color: var(--text-muted); margin-bottom: 52px; font-size: .95rem;
+    }
+    .process-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    }
+    .pq-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pq-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.4); }
+    .pq-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .pq-body { padding: 20px 22px; }
+    .pq-q {
+      font-size: .82rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .5px; color: var(--gold); margin-bottom: 6px;
+    }
+    .pq-a {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem;
+      font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4;
+    }
+    .pq-detail { font-size: .86rem; color: var(--text-muted); line-height: 1.6; }
+    .pq-badge {
+      display: inline-block; margin-top: 10px;
+      background: rgba(201,168,76,.12); color: var(--gold-light);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 3px 11px; font-size: 12px; font-weight: 700;
+    }
+
+    /* ── SOCIAL PROOF NUMBERS ── */
+    .proof-numbers {
+      display: flex; gap: 0; background: var(--dark-card); color: #fff;
+      max-width: 900px; margin: 0 auto 40px; border-radius: 16px;
+      overflow: hidden; border: 1px solid var(--border);
+    }
+    .pn-item {
+      flex: 1; padding: 22px 16px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .pn-item:last-child { border-right: none; }
+    .pn-num { font-size: 2rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .pn-lbl { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.3; }
+
+    /* ── FORM SIMPLIFICADO ── */
+    .vform-simple {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 20px; box-shadow: 0 4px 40px rgba(0,0,0,.35);
+      padding: 36px 40px; max-width: 520px; margin: 0 auto;
+    }
+    .vform-simple h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; color: #fff;
+    }
+    .vform-simple .form-sub {
+      font-size: .88rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;
+    }
+    .vform-simple .fgroup { margin-bottom: 16px; }
+    .vform-simple label {
+      display: block; font-size: .78rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;
+    }
+    .vform-simple input, .vform-simple select {
+      width: 100%; padding: 13px 16px; border: 1px solid var(--border);
+      border-radius: 10px; font-size: 1rem; transition: border-color .2s;
+      font-family: inherit; color: #fff; background: rgba(255,255,255,0.05);
+    }
+    .vform-simple select option { background: var(--dark-2); color: #fff; }
+    .vform-simple input::placeholder { color: var(--text-muted); }
+    .vform-simple input:focus, .vform-simple select:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .vform-simple .btn-submit {
+      width: 100%; padding: 16px; background: #c0392b; color: #fff;
+      border: none; border-radius: 10px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; margin-top: 6px; transition: background .2s;
+      font-family: inherit;
+    }
+    .vform-simple .btn-submit:hover { background: #e53935; }
+    .vform-simple .btn-submit:disabled { background: #555; cursor: not-allowed; }
+    .vform-simple .form-note {
+      text-align: center; font-size: .78rem; color: var(--text-muted);
+      margin-top: 10px; line-height: 1.5;
+    }
+    .vform-simple .wa-alt {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-top: 16px; padding: 12px;
+      background: rgba(37,211,102,.08); border: 1px solid rgba(37,211,102,.25);
+      border-radius: 10px; color: #4ade80; font-size: .88rem; font-weight: 600;
+      text-decoration: none; transition: background .2s;
+    }
+    .vform-simple .wa-alt:hover { background: rgba(37,211,102,.15); }
+
+    /* ── FORM SECTION NUEVA ── */
+    .vender-form-new {
+      padding: 64px 40px 80px; background: var(--dark-3);
+    }
+    .vender-form-new-inner { max-width: 900px; margin: 0 auto; }
+    .vfn-title {
+      text-align: center; font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 800; color: #fff;
+      margin-bottom: 8px;
+    }
+    .vfn-sub {
+      text-align: center; color: var(--text-muted); font-size: .95rem; margin-bottom: 36px;
+    }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 16px; margin-bottom: 40px;
+    }
+    .hs-item {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.2); text-align: center;
+    }
+    .hs-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gold); color: #000; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px; font-size: 15px;
+    }
+    .hs-item strong { display: block; font-size: .9rem; margin-bottom: 4px; color: #fff; }
+    .hs-item p { font-size: .82rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+    @media(max-width:700px){
+      .process-grid { grid-template-columns: 1fr; }
+      .proof-numbers { flex-direction: column; }
+      .pn-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .how-steps { grid-template-columns: 1fr; }
+      .vform-simple { padding: 28px 20px; }
+      .process-section { padding: 48px 20px; }
+      .vender-form-new { padding: 48px 20px 60px; }
+    }
+  </style>
 </head>
 <body class="page-vender">
+
+  <!-- BARRA DE URGENCIA FLOTANTE -->
+  <div id="urgency-bar">
+    <span>⚡ Esta semana evaluamos solo <span class="ub-spots" id="spotsNum">5</span> propiedades en la ZMG</span>
+    <span>·</span>
+    <span>Te respondemos por WhatsApp en menos de 3 horas</span>
+    <a href="#form-section">→ Reserva tu lugar</a>
+  </div>
 
   <!-- NAV -->
   <nav id="navbar" class="scrolled">
@@ -48,254 +240,161 @@
     </div>
     <div class="vender-hero-content">
       <span class="section-tag">Compra · Venta · Interés Social</span>
-      <h1>Obtén una oferta por<br /><span class="gold">tu propiedad ahora</span></h1>
+      <h1>¿Tu casa INFONAVIT te sigue<br /><span class="gold">cobrando aunque ya no vivas en ella?</span></h1>
       <p>
-        Llena el formulario con los datos de tu propiedad.<br />
-        Nuestro equipo analizará tu caso y te enviará una oferta real en <strong>menos de 48 horas</strong>.
+        Te la compramos. Aunque tenga adeudo. Aunque lleve tiempo sin habitarse.<br />
+        <strong>Oferta real en menos de 48 horas — todo ante notario.</strong>
       </p>
-      <div class="vender-hero-badges">
-        <span>✓ Sin compromiso</span>
-        <span>✓ Trámites a nuestro cargo</span>
+      <div class="social-proof-strip">
+        <span class="sp-item">🏠 +14 propiedades compradas en Jalisco</span>
+        <span class="sp-item">⚖️ 100% ante notario</span>
+        <span class="sp-item">💰 Sin costo para el vendedor</span>
+      </div>
+      <div class="vender-hero-badges" style="margin-top:14px;">
+        <span>✓ Con o sin adeudo</span>
+        <span>✓ Cualquier condición</span>
         <span>✓ Todo Jalisco</span>
       </div>
     </div>
   </section>
 
-  <!-- FORMULARIO -->
-  <section class="vender-form-section">
-    <div class="vender-form-wrap">
+  <!-- SECCIÓN: PREGUNTAS + RESPUESTAS CON IMÁGENES -->
+  <section class="process-section">
+    <div class="process-inner">
 
-      <div class="vform-left">
-        <h2>¿Cómo funciona?</h2>
-        <div class="vform-steps">
-          <div class="vform-step">
-            <div class="vstep-num">1</div>
-            <div>
-              <strong>Llena el formulario</strong>
-              <p>Datos básicos de la propiedad y tus datos de contacto. Tarda menos de 2 minutos.</p>
-            </div>
-          </div>
-          <div class="vform-step">
-            <div class="vstep-num">2</div>
-            <div>
-              <strong>Recibe tu oferta</strong>
-              <p>Analizamos el valor de mercado y te enviamos una propuesta económica formal en menos de 48 horas.</p>
-            </div>
-          </div>
-          <div class="vform-step">
-            <div class="vstep-num">3</div>
-            <div>
-              <strong>Cierra el trato</strong>
-              <p>Si aceptas, nuestro equipo legal gestiona todo. Solo firmas y recibes tu dinero.</p>
-            </div>
-          </div>
+      <h2 class="process-title">Lo que más nos preguntan</h2>
+      <p class="process-sub">Respuestas directas para que puedas tomar una decisión con confianza</p>
+
+      <!-- NÚMEROS DE CONFIANZA -->
+      <div class="proof-numbers">
+        <div class="pn-item">
+          <div class="pn-num">14</div>
+          <div class="pn-lbl">Propiedades compradas<br/>en Jalisco</div>
         </div>
-
-        <div class="vform-contact-aside">
-          <p>¿Prefieres escribirnos directamente?</p>
-          <a href="mailto:gesda.inmo@gmail.com" class="btn-outline">✉️ gesda.inmo@gmail.com</a>
-          <a href="https://wa.me/523334760271?text=Hola%2C%20me%20interesa%20vender%20mi%20propiedad%20y%20quisiera%20recibir%20una%20oferta.%20%C2%BFPodr%C3%ADan%20ayudarme%3F%20Les%20comparto%20los%20datos%3A%20Tipo%20de%20propiedad%3A%20%5BCasa%2FDepto%2FD%C3%BAplex%5D%20%7C%20Ubicaci%C3%B3n%3A%20%5BColonia%2C%20Municipio%5D%20%7C%20Cr%C3%A9dito%20activo%3A%20%5BS%C3%AD%2FNo%5D" target="_blank" rel="noopener" class="btn-whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Escríbenos por WhatsApp
-          </a>
+        <div class="pn-item">
+          <div class="pn-num">48 h</div>
+          <div class="pn-lbl">Tiempo máximo<br/>para tu oferta</div>
+        </div>
+        <div class="pn-item">
+          <div class="pn-num">100%</div>
+          <div class="pn-lbl">Procesos completados<br/>ante notario</div>
+        </div>
+        <div class="pn-item">
+          <div class="pn-num">$0</div>
+          <div class="pn-lbl">Costo para el<br/>vendedor</div>
         </div>
       </div>
 
-      <div class="vform-right">
-        <form id="ventaForm" class="venta-form">
-          <h3>Datos de la propiedad</h3>
+      <div class="process-grid">
 
+        <div class="pq-card">
+          <img class="pq-img" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=300&fit=crop&q=80" alt="Casa con crédito INFONAVIT" loading="lazy" />
+          <div class="pq-body">
+            <div class="pq-q">Pregunta frecuente #1</div>
+            <div class="pq-a">¿Me compran aunque mi casa tenga crédito INFONAVIT activo o adeudo?</div>
+            <p class="pq-detail">Sí. Precisamente eso es lo que hacemos. Compramos casas <strong>con crédito INFONAVIT activo, con adeudo, en malas condiciones o abandonadas</strong>. No necesitas liquidar nada antes — nosotros nos encargamos de eso como parte del trato.</p>
+            <span class="pq-badge">✓ Sí compramos en esas condiciones</span>
+          </div>
+        </div>
+
+        <div class="pq-card">
+          <img class="pq-img" src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=500&h=300&fit=crop" alt="Respuesta rápida en 48 horas" loading="lazy" />
+          <div class="pq-body">
+            <div class="pq-q">Pregunta frecuente #2</div>
+            <div class="pq-a">¿Cuánto tiempo tarda el proceso desde que los contacto hasta que recibo mi dinero?</div>
+            <p class="pq-detail">Recibes tu oferta en <strong>menos de 48 horas</strong> desde que nos contactas. Si la aceptas, coordinamos la notaría y el proceso completo toma entre <strong>2 y 4 semanas</strong>. Todo depende de qué tan rápido se pueda agendar la cita ante notario.</p>
+            <span class="pq-badge">✓ Oferta en 48 hrs · Cierre en 2–4 semanas</span>
+          </div>
+        </div>
+
+        <div class="pq-card">
+          <img class="pq-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=300&fit=crop" alt="Proceso legal ante notario" loading="lazy" />
+          <div class="pq-body">
+            <div class="pq-q">Pregunta frecuente #3</div>
+            <div class="pq-a">¿Tengo que pagar los trámites, el notario o algún costo?</div>
+            <p class="pq-detail">Absolutamente nada. <strong>GESDA paga todos los gastos notariales, los trámites legales y los honorarios</strong>. Para ti no hay ningún costo. Lo que acordamos es lo que recibes, sin deducciones sorpresa al final.</p>
+            <span class="pq-badge">✓ Cero costos para el vendedor</span>
+          </div>
+        </div>
+
+        <div class="pq-card">
+          <img class="pq-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&h=300&fit=crop" alt="Proceso seguro y confiable" loading="lazy" />
+          <div class="pq-body">
+            <div class="pq-q">Pregunta frecuente #4</div>
+            <div class="pq-a">¿Es seguro? ¿Cómo sé que no me van a engañar o robar mi casa?</div>
+            <p class="pq-detail"><strong>Todo el proceso se realiza ante notario público</strong>. Firmamos un contrato de promesa de compraventa antes de cualquier transacción. No avanzamos hasta que tú estés de acuerdo con la oferta y hayas leído cada punto del contrato. Tu seguridad es nuestra prioridad.</p>
+            <span class="pq-badge">✓ Contrato ante notario desde el primer día</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO SIMPLIFICADO -->
+  <section class="vender-form-new" id="form-section">
+    <div class="vender-form-new-inner">
+
+      <h2 class="vfn-title">¿Quieres saber cuánto pagamos por tu casa?</h2>
+      <p class="vfn-sub">Déjanos tus datos — un asesor te contacta por WhatsApp en menos de 3 horas con información real sobre tu propiedad</p>
+
+      <!-- CÓMO FUNCIONA (mini pasos) -->
+      <div class="how-steps">
+        <div class="hs-item">
+          <div class="hs-num">1</div>
+          <strong>Deja tus datos</strong>
+          <p>Solo nombre, teléfono y municipio. 30 segundos.</p>
+        </div>
+        <div class="hs-item">
+          <div class="hs-num">2</div>
+          <strong>Te contactamos</strong>
+          <p>Un asesor te escribe por WhatsApp en menos de 3 horas.</p>
+        </div>
+        <div class="hs-item">
+          <div class="hs-num">3</div>
+          <strong>Recibes tu oferta</strong>
+          <p>Oferta formal por escrito en menos de 48 horas. Sin compromiso.</p>
+        </div>
+      </div>
+
+      <!-- FORMULARIO 3 CAMPOS -->
+      <div class="vform-simple">
+        <h3>Recibe tu oferta gratis</h3>
+        <p class="form-sub">Sin compromiso · Sin costo · Te respondemos por WhatsApp en &lt;3 horas</p>
+
+        <form id="ventaForm">
           <div class="fgroup">
-            <label>Tipo de propiedad *</label>
-            <select name="tipo" required>
-              <option value="">Selecciona</option>
-              <option>Casa habitación</option>
-              <option>Departamento</option>
-              <option>Dúplex</option>
+            <label for="nombre">Tu nombre *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required autocomplete="name" />
+          </div>
+          <div class="fgroup">
+            <label for="telefono">Tu WhatsApp / teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="10 dígitos" required autocomplete="tel" inputmode="numeric" />
+          </div>
+          <div class="fgroup">
+            <label for="municipio">¿En qué municipio está tu casa? *</label>
+            <select id="municipio" name="municipio" required>
+              <option value="">Selecciona tu municipio</option>
+              <option>Guadalajara</option>
+              <option>Zapopan</option>
+              <option>Tlaquepaque</option>
+              <option>Tonalá</option>
+              <option>Tlajomulco de Zúñiga</option>
+              <option>El Salto</option>
+              <option>Otro municipio de Jalisco</option>
             </select>
           </div>
 
-          <div class="fgroup fgroup--half">
-            <div>
-              <label>Calle y número *</label>
-              <input type="text" name="calle" placeholder="Ej. Calle Robles 45" required />
-            </div>
-            <div>
-              <label>Colonia *</label>
-              <input type="text" name="colonia" placeholder="Ej. Las Flores" required />
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label>Municipio *</label>
-            <input type="text" name="municipio" placeholder="Ej. Guadalajara" required />
-          </div>
-
-          <div class="fgroup">
-            <label>Código postal *</label>
-            <input type="text" name="cp" id="cpInput" placeholder="Ej: 45864" required maxlength="5" inputmode="numeric" pattern="[0-9]{5}" />
-          </div>
-
-          <div id="mapContainer" class="fgroup" style="display:none;">
-            <label>Ubicación exacta — arrastra el marcador a tu propiedad</label>
-            <div id="cpMap" class="cp-map-wrap"></div>
-            <p class="field-help">📍 El marcador se coloca en tu código postal. Muévelo a la ubicación exacta de tu propiedad.</p>
-            <input type="hidden" name="ubicacion_lat" id="latField" />
-            <input type="hidden" name="ubicacion_lng" id="lngField" />
-          </div>
-
-          <div class="fgroup fgroup--half">
-            <div>
-              <label>¿Cuántos m² de terreno tiene la propiedad? *</label>
-              <input type="number" name="m2_terreno" placeholder="Ej: 90" required min="1" />
-            </div>
-            <div>
-              <label>¿Cuántos m² de construcción tiene? *</label>
-              <input type="number" name="m2_construccion" placeholder="Ej: 51" required min="1" />
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label>Número de recámaras *</label>
-            <select name="recamaras" required>
-              <option value="">Selecciona</option>
-              <option>1 recámara</option>
-              <option>2 recámaras</option>
-              <option>3 recámaras</option>
-              <option>4 recámaras</option>
-              <option>5 o más</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>Número de baños completos *</label>
-            <select name="banos" required>
-              <option value="">Selecciona</option>
-              <option>1 baño</option>
-              <option>1 baño y medio</option>
-              <option>2 baños</option>
-              <option>3 o más</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>¿Cuántos niveles tiene la propiedad? *</label>
-            <select name="niveles" required>
-              <option value="">Selecciona</option>
-              <option>1 nivel (planta baja)</option>
-              <option>2 niveles</option>
-              <option>1 nivel (departamento)</option>
-              <option>No sé</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>Antigüedad aproximada de la construcción</label>
-            <select name="antiguedad">
-              <option value="">Selecciona</option>
-              <option>Menos de 5 años</option>
-              <option>5 a 10 años</option>
-              <option>10 a 20 años</option>
-              <option>Más de 20 años</option>
-              <option>No sé</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>Estado actual de la propiedad *</label>
-            <select name="estado" required>
-              <option value="">Selecciona</option>
-              <option>Bien conservada</option>
-              <option>Habitable con reparaciones menores</option>
-              <option>Deteriorada (necesita grandes reparaciones)</option>
-              <option>Abandonada</option>
-              <option>Vandalizada o invadida</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>¿Cuánto espera recibir por la propiedad? (en pesos MXN)</label>
-            <input type="number" name="precio_esperado" placeholder="Ej: 199000" min="0" />
-            <p class="field-help">Si no tiene un precio definido, puede dejarlo en blanco.</p>
-          </div>
-
-          <div class="fgroup">
-            <label>¿La propiedad tiene adeudos? (selecciona todos los que apliquen)</label>
-            <div class="fgroup-check">
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="Predial atrasado" /><span>Predial atrasado</span></label>
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="SIAPA (agua) atrasado" /><span>SIAPA (agua) atrasado</span></label>
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="CFE (luz) atrasado" /><span>CFE (luz) atrasado</span></label>
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="Crédito hipotecario activo (INFONAVIT / banco)" /><span>Crédito hipotecario activo (INFONAVIT / banco)</span></label>
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="Cuotas de mantenimiento atrasadas" /><span>Cuotas de mantenimiento atrasadas</span></label>
-              <label class="fcheck"><input type="checkbox" name="adeudos" value="Ninguno / No sé" /><span>Ninguno / No sé</span></label>
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label>¿Cuál es el motivo principal de la venta?</label>
-            <select name="motivo_venta">
-              <option value="">Selecciona</option>
-              <option>Necesito liquidez urgente</option>
-              <option>Mudanza o cambio de ciudad</option>
-              <option>Herencia</option>
-              <option>Separación o divorcio</option>
-              <option>Deuda o embargo</option>
-              <option>Otro motivo</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>Sube fotos del estado actual de la propiedad (máximo 10)</label>
-            <div class="file-upload-wrap">
-              <input type="file" name="fotos" id="fotosInput" accept=".jpg,.jpeg,.png,.heic,image/heic" multiple />
-            </div>
-            <p class="file-hint">⚡ Las propiedades con fotos reciben oferta más rápido</p>
-          </div>
-
-          <div class="fgroup">
-            <label>¿Cuántos años lleva pagando la propiedad?</label>
-            <input type="text" name="anios_pagando" placeholder="Ej. 5 años" />
-          </div>
-
-          <div class="fgroup">
-            <label>¿Tiene crédito hipotecario activo?</label>
-            <select name="credito">
-              <option value="">Selecciona</option>
-              <option>Sí, INFONAVIT</option>
-              <option>Sí, FOVISSSTE</option>
-              <option>Sí, banco privado</option>
-              <option>No, es propia sin crédito</option>
-            </select>
-          </div>
-
-          <div class="fgroup">
-            <label>Notas adicionales (opcional)</label>
-            <textarea name="notas" rows="3" placeholder="Cuéntanos algo más sobre la propiedad o tu situación..."></textarea>
-          </div>
-
-          <div class="vform-divider"><span>Tus datos de contacto</span></div>
-
-          <div class="fgroup fgroup--half">
-            <div>
-              <label>Nombre completo *</label>
-              <input type="text" name="nombre" placeholder="Tu nombre" required />
-            </div>
-            <div>
-              <label>Teléfono *</label>
-              <input type="tel" name="telefono" placeholder="10 dígitos" required />
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label>Correo electrónico *</label>
-            <input type="email" name="email" placeholder="para enviarte la oferta por escrito" required />
-          </div>
-
-          <button type="submit" class="btn-primary btn-full btn-venta">
-            Enviar y recibir mi oferta →
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Quiero saber cuánto me pagan →
           </button>
-          <p class="form-note">Al enviar acepta que GESDA Constructora se ponga en contacto con usted. Sin spam.</p>
+          <p class="form-note">🔒 Tus datos son confidenciales. Solo los usamos para contactarte con tu oferta. Sin spam.</p>
         </form>
+
+        <a href="https://wa.me/523334760271?text=Hola%2C%20quiero%20saber%20cu%C3%A1nto%20me%20pagar%C3%ADan%20por%20mi%20casa%20con%20cr%C3%A9dito%20INFONAVIT.%20%C2%BFMe%20pueden%20dar%20informaci%C3%B3n%3F" target="_blank" rel="noopener" class="wa-alt">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          O escríbenos directamente por WhatsApp ahora
+        </a>
       </div>
 
     </div>
@@ -314,169 +413,71 @@
     </div>
   </footer>
 
-  <!-- Toast -->
-  <div id="toast" style="
-    display:none; position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
-    background:#1a1a2e; border:1px solid var(--gold); color:#fff;
-    padding:16px 28px; border-radius:100px; font-size:0.95rem;
-    z-index:9999; box-shadow:0 8px 32px rgba(0,0,0,0.5); white-space:nowrap;
-  "></div>
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/523334760271?text=Hola%2C%20quiero%20saber%20cu%C3%A1nto%20me%20pagar%C3%ADan%20por%20mi%20casa%20con%20cr%C3%A9dito%20INFONAVIT.%20Tiene%20adeudo%20activo%20y%20me%20gustar%C3%ADa%20recibir%20una%20oferta.%20%C2%BFMe%20pueden%20ayudar%3F"
+     target="_blank" rel="noopener" class="wa-float">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Escríbenos por WhatsApp</span>
+  </a>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Toast -->
+  <div id="toast" style="display:none;position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a2e;border:1px solid #f4a261;color:#fff;padding:16px 28px;border-radius:100px;font-size:.95rem;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.5);white-space:nowrap;"></div>
+
   <script src="assets/js/main.js"></script>
   <script>
-    // ─── TOAST ───
+    // ── URGENCY BAR: spots según día de la semana ──
+    (function(){
+      const day = new Date().getDay(); // 0=Dom,1=Lun,2=Mar,3=Mié,4=Jue,5=Vie,6=Sáb
+      const spots = {0:2, 1:5, 2:4, 3:3, 4:2, 5:2, 6:2};
+      document.getElementById('spotsNum').textContent = spots[day] ?? 3;
+    })();
+
+    // ── TOAST ──
     function showToast(msg, ok) {
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.style.display = 'block';
-      t.style.borderColor = ok ? 'var(--gold)' : '#e55';
+      t.style.borderColor = ok ? '#f4a261' : '#e55';
       setTimeout(() => { t.style.display = 'none'; }, 5000);
     }
 
-    // ─── MAPA CP ───
-    let map = null, marker = null, geocodeTimer = null;
-
-    document.getElementById('cpInput').addEventListener('input', function () {
-      clearTimeout(geocodeTimer);
-      const cp = this.value.trim();
-      if (/^\d{5}$/.test(cp)) {
-        geocodeTimer = setTimeout(() => geocodeCP(cp), 700);
-      }
-    });
-
-    async function geocodeCP(cp) {
-      try {
-        const r = await fetch(
-          `https://nominatim.openstreetmap.org/search?postalcode=${cp}&country=Mexico&format=json&limit=1`,
-          { headers: { 'Accept-Language': 'es' } }
-        );
-        const data = await r.json();
-        if (!data.length) return;
-
-        const lat = parseFloat(data[0].lat);
-        const lng = parseFloat(data[0].lon);
-        const container = document.getElementById('mapContainer');
-        container.style.display = 'block';
-
-        if (!map) {
-          map = L.map('cpMap').setView([lat, lng], 16);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>'
-          }).addTo(map);
-          marker = L.marker([lat, lng], { draggable: true }).addTo(map);
-          marker.bindPopup('Arrastra el marcador hasta tu propiedad').openPopup();
-          marker.on('dragend', syncLatLng);
-        } else {
-          map.setView([lat, lng], 16);
-          marker.setLatLng([lat, lng]);
-        }
-        syncLatLng();
-        setTimeout(() => map.invalidateSize(), 200);
-      } catch (e) {}
-    }
-
-    function syncLatLng() {
-      const p = marker.getLatLng();
-      document.getElementById('latField').value = p.lat.toFixed(6);
-      document.getElementById('lngField').value = p.lng.toFixed(6);
-    }
-
-    // ─── FORM SUBMIT ───
-    document.getElementById('ventaForm').addEventListener('submit', async function (e) {
+    // ── FORM SUBMIT (3 campos) ──
+    document.getElementById('ventaForm').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const nombre    = this.nombre.value.trim();
+      const telefono  = this.telefono.value.trim();
+      const municipio = this.municipio.value;
 
-      const fotosInput = document.getElementById('fotosInput');
-      if (fotosInput.files.length > 10) {
-        showToast('⚠ Máximo 10 fotos permitidas.', false);
-        return;
-      }
-      for (const f of fotosInput.files) {
-        if (f.size > 10 * 1024 * 1024) {
-          showToast(`⚠ La foto "${f.name}" supera los 10 MB.`, false);
-          return;
-        }
-      }
-
-      const btn = this.querySelector('button[type="submit"]');
       btn.textContent = 'Enviando…';
       btn.disabled = true;
-
-      const d = new FormData(this);
-      const nombre     = d.get('nombre')          || '—';
-      const telefono   = d.get('telefono')        || '—';
-      const email      = d.get('email')           || '—';
-      const tipo       = d.get('tipo')            || '—';
-      const calle      = d.get('calle')           || '—';
-      const colonia    = d.get('colonia')         || '—';
-      const municipio  = d.get('municipio')       || '—';
-      const cp         = d.get('cp')              || '—';
-      const lat        = d.get('ubicacion_lat')   || '';
-      const lng        = d.get('ubicacion_lng')   || '';
-      const m2t        = d.get('m2_terreno')      || '—';
-      const m2c        = d.get('m2_construccion') || '—';
-      const recamaras  = d.get('recamaras')       || '—';
-      const banos      = d.get('banos')           || '—';
-      const niveles    = d.get('niveles')         || '—';
-      const antiguedad = d.get('antiguedad')      || '—';
-      const estado     = d.get('estado')          || '—';
-      const precio     = d.get('precio_esperado') || '';
-      const adeudos    = d.getAll('adeudos').join(', ') || 'Ninguno indicado';
-      const motivo     = d.get('motivo_venta')    || '—';
-      const anios      = d.get('anios_pagando')   || '—';
-      const credito    = d.get('credito')         || '—';
-      const notas      = d.get('notas')           || '—';
-
-      const gps = (lat && lng) ? ` | GPS: ${lat}, ${lng}` : '';
-      const ubicacion = `${calle}, Col. ${colonia}, ${municipio}, CP ${cp}${gps}`;
-      const precioFmt = precio ? '$' + parseInt(precio).toLocaleString('es-MX') + ' MXN' : 'No indicado';
-
-      const fd = new FormData();
-      fd.append('_subject', `Solicitud oferta — ${nombre} — ${municipio} CP${cp}`);
-      fd.append('_template', 'table');
-      fd.append('_captcha', 'false');
-      fd.append('01 Nombre',              nombre);
-      fd.append('02 Teléfono',            telefono);
-      fd.append('03 Email',               email);
-      fd.append('04 Tipo de propiedad',   tipo);
-      fd.append('05 Dirección',           ubicacion);
-      fd.append('06 m² Terreno',          m2t + ' m²');
-      fd.append('07 m² Construcción',     m2c + ' m²');
-      fd.append('08 Recámaras',           recamaras);
-      fd.append('09 Baños',               banos);
-      fd.append('10 Niveles',             niveles);
-      fd.append('11 Antigüedad',          antiguedad);
-      fd.append('12 Estado actual',       estado);
-      fd.append('13 Precio esperado',     precioFmt);
-      fd.append('14 Adeudos',             adeudos);
-      fd.append('15 Motivo de venta',     motivo);
-      fd.append('16 Años pagando',        anios);
-      fd.append('17 Crédito activo',      credito);
-      fd.append('18 Notas',               notas);
-
-      for (let i = 0; i < fotosInput.files.length; i++) {
-        fd.append(`foto_${i + 1}`, fotosInput.files[i], fotosInput.files[i].name);
-      }
 
       try {
         const res = await fetch('https://formsubmit.co/ajax/gesda.inmo@gmail.com', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: fd,
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject:  `Nuevo lead INFONAVIT — ${nombre} — ${municipio}`,
+            _template: 'table',
+            _captcha:  'false',
+            'Nombre':     nombre,
+            'Teléfono':   telefono,
+            'Municipio':  municipio,
+            'Fuente':     'Landing vender.html — Campaña INFONAVIT',
+          }),
         });
         const json = await res.json();
         if (json.success === 'true' || json.success === true) {
           fbq('track', 'Lead');
-          showToast('✓ Solicitud enviada — te contactamos en menos de 48 hrs', true);
+          showToast('✓ ¡Listo! Te contactamos por WhatsApp en menos de 3 horas', true);
           this.reset();
-          document.getElementById('mapContainer').style.display = 'none';
         } else {
           throw new Error('fail');
         }
       } catch {
-        showToast('⚠ No se pudo enviar. Escríbenos a gesda.inmo@gmail.com', false);
+        showToast('⚠ No se pudo enviar. Escríbenos directo a WhatsApp.', false);
       } finally {
-        btn.textContent = 'Enviar y recibir mi oferta →';
+        btn.textContent = 'Quiero saber cuánto me pagan →';
         btn.disabled = false;
       }
     });
